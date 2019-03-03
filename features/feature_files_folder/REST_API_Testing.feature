@@ -13,6 +13,10 @@ Scenario: GET request users
 	And Raise "GET" HTTP request
   Then Valid HTTP response should be received
 	And Response http code should be 200
+	And Response HEADER content type should be "application/json"
+	And Response BODY should not be null or empty
+	And Response time in milliseconds should be less than 10
+	And Total Users should be 10
 
 
 Scenario: GET request albums
@@ -22,3 +26,8 @@ Scenario: GET request albums
 	And Raise "GET" HTTP request
   Then Valid HTTP response should be received
 	And Response http code should be 200
+	And Response HEADER content type should be "application/json"
+	And Response BODY should not be null or empty
+	And Response time in milliseconds should be less than 10
+	And Total Albums should be 100
+    And Each User has published 10 Albums
